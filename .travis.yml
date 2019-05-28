@@ -11,18 +11,19 @@ services:
 
 branches:
   only:
-  - master
-  - dev
-  - release
+    - master
+    - dev
+    - release
 
 jobs:
   include:
     - stage: deploy
-      script: cd src/docker && \
-      docker build --no-cache -f Dockerfile -t clouthinkin/helloworld:eureka --rm=true ../.. && \
-      docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD && \
-      docker push clouthinkin/helloworld:eureka && \
-      docker logout
+      script:
+        - cd src/docker
+        - docker build --no-cache -f Dockerfile -t clouthinkin/helloworld:eureka --rm=true ../..
+        - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+        - docker push clouthinkin/helloworld:eureka && \
+        - docker logout
 
 stages:
   - name: deploy
