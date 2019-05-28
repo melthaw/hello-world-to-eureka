@@ -22,8 +22,8 @@ jobs:
       script:
         - cd src/docker
         - docker build --no-cache -f Dockerfile -t clouthinkin/helloworld:eureka --rm=true ../..
-        - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
-        - docker push clouthinkin/helloworld:eureka && \
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - docker push clouthinkin/helloworld:eureka
         - docker logout
 
 stages:
