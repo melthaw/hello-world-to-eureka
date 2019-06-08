@@ -6,4 +6,4 @@ eureka:
     instance-id: ${eureka.instance.hostname}:${eureka.instance.non-secure-port}:${random.value}
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_DEFAULT_SERVICE_URL:http://registry/eureka/}
+      defaultZone: ${EUREKA_SERVICE_URL:http://registry/eureka/}

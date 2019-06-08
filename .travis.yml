@@ -4,9 +4,6 @@ dist: xenial
 
 sudo: required
 
-notifications:
-  webhooks: https://hook.bearychat.com/=bwBrp/travis/93d020f67c0a20049466b93a0211692c
-
 services:
   - docker
 
@@ -25,7 +22,12 @@ jobs:
         - docker login --username "$DOCKER_USERNAME" --password "$DOCKER_PASSWORD"
         - docker push clouthinkin/helloworld:eureka
         - docker logout
+    - stage: build
+      script:
+        - ./gradlew clean build -x test
 
 stages:
   - name: deploy
     if: branch = master
+  - name: build
+    if: branch = dev
