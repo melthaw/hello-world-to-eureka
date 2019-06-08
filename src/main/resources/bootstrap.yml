@@ -3,6 +3,5 @@ spring:
     name: helloworld
 
 logging:
-  file: helloworld.log
   level:
     root: INFO
