@@ -9,7 +9,7 @@ public class SleepRestController {
 
     @GetMapping("/sleep")
     @ResponseStatus(HttpStatus.OK)
-    public void sleep(@ModelAttribute int duration) {
+    public void sleep(@@RequestParam("duration") int duration) {
         try {
             Thread.sleep(duration);
         } catch (InterruptedException e) {
